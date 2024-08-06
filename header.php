@@ -46,9 +46,13 @@
 	$postTextColor = esc_attr($options['goldira_post_text_color']);
 	$postLinkColor = esc_attr($options['goldira_post_link_color']);
 	$postLinkHoverColor = esc_attr($options['goldira_post_link_hover_color']);
+
+	$postTitleColor = esc_attr($options['goldira_post_title_color']);
+	$postTitleSize = esc_attr($options['goldira_post_title_font_size']);
+	$postTitleFont = esc_attr($options['goldira_post_title_font']);
 	/** Footer Related */
 	$options = get_option('goldira_footer_settings');
-	print_r($options);
+ 
 	$footerLinkColor = esc_attr($options['goldira_footer_linkcolor']);
 	$footerFontSize = esc_attr($options['goldira_footer_font_size']);
 	$footerBackground = esc_attr($options['goldira_footer_background']);
@@ -81,6 +85,12 @@
 			background-color: <?php echo $footerBackground; ?>;
 			padding-top: 33px;
 			padding-bottom: 33px;
+		}
+
+		.posthead h1 {
+			font-size: <?php echo $postTitleSize; ?>px;
+			color: <?php echo $postTitleColor; ?>;
+			font-family: <?php echo 	$postTitleFont;?>;
 		}
 	</style>
 </head>

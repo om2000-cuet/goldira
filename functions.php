@@ -379,6 +379,25 @@ function twentytwelve_widgets_init()
 			'after_title'   => '</h3>',
 		)
 	);
+	register_sidebar(array(
+		'name' => 'Left End Sidebar',
+		'id'            => 'Left End Sidebar',
+			'description'   => __('Appears on posts and pages except the optional Front Page template, which has its own widgets', 'twentytwelve'),
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</aside>',
+			'before_title'  => '<h3 class="widget-title">',
+			'after_title'   => '</h3>',
+	));	
+	if ( function_exists('register_sidebar') )
+	register_sidebar(array(
+		'name' => 'Right End Sidebar',
+		'id'            => 'Right End Sidebar',
+			'description'   => __('Appears on posts and pages except the optional Front Page template, which has its own widgets', 'twentytwelve'),
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</aside>',
+			'before_title'  => '<h3 class="widget-title">',
+			'after_title'   => '</h3>',
+	));
 
 	register_sidebar(
 		array(
@@ -1150,6 +1169,9 @@ function goldira_post_settings_page()
 				<?php
 				settings_fields('goldira_post_settings_group');
 				do_settings_sections('goldira-post-section');
+
+			 
+				 
 				submit_button();
 				?>
 			</form>
@@ -1165,6 +1187,7 @@ function goldira_post_settings_page_opc()
 		'goldira_post_setting_section_cb',
 		'goldira-post-section',
 	);
+
 	add_settings_field(
 		'goldira_post_text_color',
 		__('Post text color', 'goldira'),
@@ -1187,11 +1210,74 @@ function goldira_post_settings_page_opc()
 		'goldira-post-section',
 		'goldira_post_setting_section',
 	);
+	add_settings_section(
+		'goldira_post_setting_section1',
+		__('Post Title ', 'goldira'),
+		'goldira_post_setting_section_cb1',
+		'goldira-post-section',
+	);
+
+	 
+	add_settings_field(
+		'goldira_post_title_font',
+		__('Post title font','goldira'),
+		'goldira_post_title_font_cb', 
+		'goldira-post-section', 
+		'goldira_post_setting_section1', 
+	);
+	add_settings_field(
+		'goldira_post_title_color',
+		__('Post title color', 'goldira'),
+		'goldira_post_title_color_cb',
+		'goldira-post-section',
+		'goldira_post_setting_section1',
+	);
+
+	 
+	add_settings_field(
+		'goldira_post_title_font_size',
+		__('Post title font size','goldira'),
+		'goldira_post_title_font_size_cb', 
+		'goldira-post-section', 
+		'goldira_post_setting_section1', 
+	);
+}
+function goldira_post_setting_section_cb1()
+{
+	echo " ";
+}
+function goldira_post_title_font_cb() {
+    $options = get_option('goldira_post_settings');
+    $selected_font = $options['goldira_post_title_font'] ?? 'Arial';
+    $fonts = array('Arial', 'Georgia', 'Verdana', 'Trebuchet MS', 'Lucida Grande', 'Courier New', 'Impact', 'Comic Sans MS');
+
+    echo '<select name="goldira_post_settings[goldira_post_title_font]" id="flex_sidebar_topfont">';
+    foreach ($fonts as $font) {
+        $selected = ($font == $selected_font) ? 'selected="selected"' : '';
+        echo '<option value="' . esc_attr($font) . '" ' . $selected . '>' . esc_html($font) . '</option>';
+    }
+    echo '</select>';
+    echo '<p class="description">' . __('Choose the font style for your top sidebar box titles', 'goldira') . '</p>';
+}
+function goldira_post_title_font_size_cb(){
+	$options = get_option('goldira_post_settings');
+    $font_size = $options['goldira_post_title_font_size'] ?? '16';
+
+    echo '<input name="goldira_post_settings[goldira_post_title_font_size]" id="flex_sidebar_tfontsize" type="text" value="' . esc_attr($font_size) . '" style="width: 80px;" />';
+    echo '<p class="description">' . __('Select the size (in pixels) of the title font in your top sidebar boxes', 'goldira') . '</p>';
+
+}
+function goldira_post_title_color_cb()
+{
+	$options = get_option('goldira_post_settings');
+	echo '<input name="goldira_post_settings[goldira_post_title_color]" id="flex_page_backgroundcolor" class="color-field" value="' . esc_attr($options['goldira_post_title_color'] ?? '') . '" style="width: 80px;" />';
 }
 function goldira_post_setting_section_cb()
 {
 	echo '<p>' . __('Set your Post background and other settings below:', 'goldira') . '</p>';
 }
+
+
 function goldira_post_text_color_cb()
 {
 	$options = get_option('goldira_post_settings');

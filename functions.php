@@ -1063,7 +1063,13 @@ function goldira_sidebar_settings_page_opc()
 		'goldira_sidebar_settings_section',
 		 
 	);
-
+add_settings_field(
+	'goldira_sidebar_background_color',
+	__('Sidebar background color','goldira'),
+	'goldira_sidebar_background_color_cb',
+	'goldira-sidebar-section',
+	'goldira_sidebar_settings_section',
+);
 	add_settings_field(
 		'goldira_sidebar_link_color', 
 		__('Sidebar Link Color','goldira'),
@@ -1082,6 +1088,11 @@ add_settings_field(
 
 
 
+
+}
+function goldira_sidebar_background_color_cb(){
+	$options = get_option('goldira_sidebar_settings');
+	echo '<input name="goldira_sidebar_settings[goldira_sidebar_background_color]" id="flex_page_backgroundcolor" class="color-field" value="' . esc_attr($options['goldira_sidebar_background_color'] ?? '') . '" style="width: 80px;" />';
 
 }
 function goldira_sidebar_title_background_color_cb(){

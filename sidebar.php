@@ -19,7 +19,7 @@ $sidebarFont =  esc_attr($options['goldira_sidebar_topfont']);
 $sidebarFontSize = esc_attr($options['goldira_sidebar_topfont_size']) ;
 $sidebarTitleFontColor = esc_attr($options['goldira_sidebar_title_font_color']) ;
 $sidebarTitleBackgroundColor = esc_attr($options['goldira_sidebar_title_background_color']) ;
- 
+$sidebarBackgroundColor = esc_attr($options['goldira_sidebar_background_color']);
 ?>
 <style>
 
@@ -35,6 +35,7 @@ $sidebarTitleBackgroundColor = esc_attr($options['goldira_sidebar_title_backgrou
 #sidebar .widget {
     border: solid 3px #664F03;
 	border-color:<?php echo $sidebarBorderColor;?>;
+	background-color:<?php echo $sidebarBackgroundColor;?>;
     padding: 6px;
     margin-bottom: 24px;
 	

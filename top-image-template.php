@@ -75,6 +75,7 @@ Template Name: Page with top image
     float: none;
     margin-left: auto;
     margin-right: auto;
+    position: relative;
   }
 
   img#globe {

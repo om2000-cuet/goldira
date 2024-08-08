@@ -860,7 +860,214 @@ function goldira_admin_menu()
 		'sidebar-settings',
 		'goldira_sidebar_settings_page'
 	);
+
+add_submenu_page(
+	'theme-options',
+	'Navigation Menu Settings', 
+	'Navigation Menu Settings', 
+	'manage_options', 
+	'navigation-menu-settings', 
+	'goldira_navigation_menu_settings_page'
+);
+
+
 }
+// Navigation Menu Settings page
+function goldira_navigation_menu_settings_page(){
+	?>
+	<div class="wrap">
+		<h1><?php _e('Navigation Menu Settings', 'goldira'); ?></h1>
+		<form method="post" action="options.php">
+			<?php
+			settings_fields('goldira_navigation_menu_settings_group');
+			do_settings_sections('goldira-navigation-menu-section');
+			submit_button();
+			?>
+		</form>
+	</div>
+<?php
+
+}
+
+add_action('admin_init', 'goldira_navigation_menu_settings_page_opc');
+
+function goldira_navigation_menu_settings_page_opc()
+{
+	register_setting('goldira_navigation_menu_settings_group', 'goldira_navigation_menu_settings');
+
+	add_settings_section(
+		'goldira_navigation_menu_settings_section',
+		__('Navigation Menu Settings', 'goldira'),
+		'goldira_navigation_menu_settings_section_cb',
+		'goldira-navigation-menu-section',
+	);
+	add_settings_field(
+		'goldira_navigation_menu_font',
+		__('Menu Font', 'goldira'),
+		'goldira_navigation_menu_font_cb',
+		'goldira-navigation-menu-section', 
+		'goldira_navigation_menu_settings_section'
+	);
+	add_settings_field(
+		'goldira_navigation_menu_background_color',
+		__('Navigation Menu background color', 'goldira'),
+		'goldira_navigation_menu_background_color_cb',
+		'goldira-navigation-menu-section', 
+		'goldira_navigation_menu_settings_section'
+	);
+	add_settings_field(
+		'goldira_navigation_menu_font_color',
+		__('Navigation Menu font color', 'goldira'),
+		'goldira_navigation_menu_font_color_cb',
+		'goldira-navigation-menu-section', 
+		'goldira_navigation_menu_settings_section'
+	);
+	add_settings_field(
+		'goldira_navigation_menu_submenu_font_color',
+		__('Navigation Menu Submenu font color', 'goldira'),
+		'goldira_navigation_menu_submenu_font_color_cb',
+		'goldira-navigation-menu-section', 
+		'goldira_navigation_menu_settings_section'
+	);
+	add_settings_field(
+		'goldira_navigation_menu_tab_color',
+		__('Navigation Menu Tab Color', 'goldira'),
+		'goldira_navigation_menu_tab_color_cb',
+		'goldira-navigation-menu-section', 
+		'goldira_navigation_menu_settings_section'
+	);
+
+	add_settings_field(
+		'goldira_navigation_menu_tab_active_color',
+		__('Navigation Menu Tab Active Color', 'goldira'),
+		'goldira_navigation_menu_tab_active_color_cb',
+		'goldira-navigation-menu-section', 
+		'goldira_navigation_menu_settings_section'
+	);
+
+	add_settings_field(
+		'goldira_navigation_menu_tab_hover_color',
+		__('Navigation Menu Tab Hover Color', 'goldira'),
+		'goldira_navigation_menu_tab_hover_color_cb',
+		'goldira-navigation-menu-section', 
+		'goldira_navigation_menu_settings_section'
+	);
+
+	add_settings_field(
+		'goldira_navigation_menu_submenu_background_color',
+		__('Navigation Menu Submenu Background Color', 'goldira'),
+		'goldira_navigation_menu_submenu_background_color_cb',
+		'goldira-navigation-menu-section', 
+		'goldira_navigation_menu_settings_section'
+	);
+	add_settings_field(
+		'goldira_navigation_menu_submenu_hover_background_color',
+		__('Navigation Menu Submenu Hover Background Color', 'goldira'),
+		'goldira_navigation_menu_submenu_hover_background_color_cb',
+		'goldira-navigation-menu-section', 
+		'goldira_navigation_menu_settings_section'
+	);
+	add_settings_field(
+		'goldira_navigation_menu_submenu_border_color',
+		__('Navigation Menu Submenu Border Color', 'goldira'),
+		'goldira_navigation_menu_submenu_border_color_cb',
+		'goldira-navigation-menu-section', 
+		'goldira_navigation_menu_settings_section'
+	);
+	add_settings_field(
+		'goldira_navigation_menu_font_size',
+		__('Navigation Menu Font Size', 'goldira'),
+		'goldira_navigation_menu_font_size_cb',
+	'goldira-navigation-menu-section', 
+		'goldira_navigation_menu_settings_section'
+	);
+	add_settings_field(
+		'goldira_navigation_menu_submenu_width',
+		__('Navigation Menu Submenu Width', 'goldira'),
+		'goldira_navigation_menu_submenu_width_cb',
+	'goldira-navigation-menu-section', 
+		'goldira_navigation_menu_settings_section'
+	);
+
+}
+function goldira_navigation_menu_submenu_border_color_cb(){
+	$options = get_option('goldira_navigation_menu_settings');
+	echo '<input name="goldira_navigation_menu_settings[goldira_navigation_menu_submenu_border_color]" id="flex_page_backgroundcolor" class="color-field" value="' . esc_attr($options['goldira_navigation_menu_submenu_border_color'] ?? '') . '" style="width: 80px;" />';
+
+}
+function goldira_navigation_menu_submenu_font_color_cb(){
+	$options = get_option('goldira_navigation_menu_settings');
+	echo '<input name="goldira_navigation_menu_settings[goldira_navigation_menu_submenu_font_color]" id="flex_page_backgroundcolor" class="color-field" value="' . esc_attr($options['goldira_navigation_menu_submenu_font_color'] ?? '') . '" style="width: 80px;" />';
+
+}
+
+function goldira_navigation_menu_font_cb() {
+    $options = get_option('goldira_navigation_menu_settings');
+    $selected_font = $options['goldira_navigation_menu_font'] ?? 'Arial';
+    $fonts = array('Arial', 'Georgia', 'Verdana', 'Trebuchet MS', 'Lucida Grande', 'Courier New', 'Impact', 'Comic Sans MS');
+
+    echo '<select name="goldira_navigation_menu_settings[goldira_navigation_menu_font]" id="flex_sidebar_topfont">';
+    foreach ($fonts as $font) {
+        $selected = ($font == $selected_font) ? 'selected="selected"' : '';
+        echo '<option value="' . esc_attr($font) . '" ' . $selected . '>' . esc_html($font) . '</option>';
+    }
+    echo '</select>';
+    echo '<p class="description">' . __('Choose the font style for your top sidebar box titles', 'goldira') . '</p>';
+}
+function goldira_navigation_menu_font_size_cb() {
+    $options = get_option('goldira_navigation_menu_settings');
+    $font_size = $options['goldira_navigation_menu_font_size'] ?? '16';
+
+    echo '<input name="goldira_navigation_menu_settings[goldira_navigation_menu_font_size]" id="flex_sidebar_tfontsize" type="text" value="' . esc_attr($font_size) . '" style="width: 80px;" />';
+    echo '<p class="description">' . __('Select the size (in pixels) of the title font in your top sidebar boxes', 'goldira') . '</p>';
+}
+function goldira_navigation_menu_submenu_width_cb() {
+    $options = get_option('goldira_navigation_menu_settings');
+    $font_size = $options['goldira_navigation_menu_submenu_width'] ?? '16';
+
+    echo '<input name="goldira_navigation_menu_settings[goldira_navigation_menu_submenu_width]" id="flex_sidebar_tfontsize" type="text" value="' . esc_attr($font_size) . '" style="width: 80px;" />';
+    echo '<p class="description">' . __('Select the size (in pixels) of the title font in your top sidebar boxes', 'goldira') . '</p>';
+}
+function goldira_navigation_menu_submenu_hover_background_color_cb(){
+	$options = get_option('goldira_navigation_menu_settings');
+	echo '<input name="goldira_navigation_menu_settings[goldira_navigation_menu_submenu_hover_background_color]" id="flex_page_backgroundcolor" class="color-field" value="' . esc_attr($options['goldira_navigation_menu_submenu_hover_background_color'] ?? '') . '" style="width: 80px;" />';
+
+}
+function goldira_navigation_menu_submenu_background_color_cb(){
+	$options = get_option('goldira_navigation_menu_settings');
+	echo '<input name="goldira_navigation_menu_settings[goldira_navigation_menu_submenu_background_color]" id="flex_page_backgroundcolor" class="color-field" value="' . esc_attr($options['goldira_navigation_menu_submenu_background_color'] ?? '') . '" style="width: 80px;" />';
+
+}
+function goldira_navigation_menu_settings_section_cb()
+{
+	echo '<p>' . __('Set your Navigation Menu text and other settings below:', 'goldira') . '</p>';
+}
+function goldira_navigation_menu_background_color_cb(){
+	$options = get_option('goldira_navigation_menu_settings');
+	echo '<input name="goldira_navigation_menu_settings[goldira_navigation_menu_background_color]" id="flex_page_backgroundcolor" class="color-field" value="' . esc_attr($options['goldira_navigation_menu_background_color'] ?? '') . '" style="width: 80px;" />';
+
+}
+function goldira_navigation_menu_tab_hover_color_cb(){
+	$options = get_option('goldira_navigation_menu_settings');
+	echo '<input name="goldira_navigation_menu_settings[goldira_navigation_menu_tab_hover_color]" id="flex_page_backgroundcolor" class="color-field" value="' . esc_attr($options['goldira_navigation_menu_tab_hover_color'] ?? '') . '" style="width: 80px;" />';
+
+}
+function goldira_navigation_menu_tab_active_color_cb(){
+	$options = get_option('goldira_navigation_menu_settings');
+	echo '<input name="goldira_navigation_menu_settings[goldira_navigation_menu_tab_active_color]" id="flex_page_backgroundcolor" class="color-field" value="' . esc_attr($options['goldira_navigation_menu_tab_active_color'] ?? '') . '" style="width: 80px;" />';
+
+}
+function goldira_navigation_menu_tab_color_cb(){
+	$options = get_option('goldira_navigation_menu_settings');
+	echo '<input name="goldira_navigation_menu_settings[goldira_navigation_menu_tab_color]" id="flex_page_backgroundcolor" class="color-field" value="' . esc_attr($options['goldira_navigation_menu_tab_color'] ?? '') . '" style="width: 80px;" />';
+
+}
+function goldira_navigation_menu_font_color_cb(){
+	$options = get_option('goldira_navigation_menu_settings');
+	echo '<input name="goldira_navigation_menu_settings[goldira_navigation_menu_font_color]" id="flex_page_backgroundcolor" class="color-field" value="' . esc_attr($options['goldira_navigation_menu_font_color'] ?? '') . '" style="width: 80px;" />';
+
+}
+
 
 // Function to render the Footer Settings page
 function goldira_footer_settings_page()
@@ -1336,6 +1543,15 @@ function goldira_footer_settings_page_opc()
 		'goldira-footer-section',
 		'goldira_footer_setting_section'
 	);
+
+	add_settings_field(
+		'goldira_footer_title_font_size',
+		__('Footer Widget Title Font Size', 'goldira'),
+		'goldira_footer_title_font_size_cb',
+		'goldira-footer-section',
+		'goldira_footer_setting_section'
+	);
+
 	add_settings_field(
 		'goldira_footer_text_color',
 		__('Footer Text Color', 'goldira'),
@@ -1358,6 +1574,17 @@ function goldira_footer_settings_page_opc()
 function goldira_footer_setting_section_cb()
 {
 	echo '<p>' . __('Set your footer background and other settings below:', 'goldira') . '</p>';
+}
+function goldira_footer_title_font_size_cb()
+{
+ 
+	$options = get_option('goldira_footer_settings');
+    $font_size = $options['goldira_footer_title_font_size'] ?? '16';
+
+    echo '<input name="goldira_footer_settings[goldira_footer_title_font_size]" id="flex_sidebar_tfontsize" type="text" value="' . esc_attr($font_size) . '" style="width: 80px;" />';
+    echo '<p class="description">' . __('Select the size (in pixels) of the title font in your top sidebar boxes', 'goldira') . '</p>';
+
+
 }
 
 function goldira_footer_font_size_cb()
@@ -1437,3 +1664,13 @@ function goldira_footer_menu(){
 	register_nav_menu('goldira_footer_menu',__('Footer Menu','goldira'));
 }
 add_action('init','goldira_footer_menu');
+function enqueue_google_fonts_for_mobile() {
+    // Check if the user is on a mobile device
+    if ( wp_is_mobile() ) {
+        // Enqueue the Google Fonts stylesheet
+        wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;1,700&display=swap', array(), null);
+		wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,600,700|Open+Sans:300,400,600', array(), null);
+
+    }
+}
+add_action('wp_enqueue_scripts', 'enqueue_google_fonts_for_mobile');

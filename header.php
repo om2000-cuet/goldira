@@ -52,10 +52,27 @@
 	$postTitleFont = esc_attr($options['goldira_post_title_font']);
 	/** Footer Related */
 	$options = get_option('goldira_footer_settings');
- 
+
 	$footerLinkColor = esc_attr($options['goldira_footer_linkcolor']);
 	$footerFontSize = esc_attr($options['goldira_footer_font_size']);
+	$footerTitleFontSize = esc_attr($options['goldira_footer_title_font_size']);
 	$footerBackground = esc_attr($options['goldira_footer_background']);
+	/** Navigation Menu Related */
+	$options = get_option('goldira_navigation_menu_settings');
+
+	$navigationMenuColor = esc_attr($options['goldira_navigation_menu_tab_color']);
+	$navigationMenuBackgroundColor = esc_attr($options['goldira_navigation_menu_background_color']);
+	$navigationMenuActiveBackgroundColor = esc_attr($options['goldira_navigation_menu_tab_active_color']);
+	$navMenuHoverColor = esc_attr($options['goldira_navigation_menu_tab_hover_color']);
+
+
+	$subMenu = esc_attr($options['goldira_navigation_menu_submenu_background_color']);
+	$subMenuHover = esc_attr($options['goldira_navigation_menu_submenu_hover_background_color']);
+	$menuFontSize = esc_attr($options['goldira_navigation_menu_font_size']);
+	$menuSubWidth = esc_attr($options['goldira_navigation_menu_submenu_width']);
+	$menuFont = esc_attr($options['goldira_navigation_menu_font']);
+	$menuFontColor = esc_attr($options['goldira_navigation_menu_font_color']);
+	$subMenuBorderColor = esc_attr($options['goldira_navigation_menu_submenu_border_color']);
 
 	?>
 	<style>
@@ -90,7 +107,62 @@
 		.posthead h1 {
 			font-size: <?php echo $postTitleSize; ?>px;
 			color: <?php echo $postTitleColor; ?>;
-			font-family: <?php echo 	$postTitleFont;?>;
+			font-family: <?php echo 	$postTitleFont; ?>;
+		}
+
+		#colophon h3.widget-title {
+			font-size: <?php echo $footerTitleFontSize; ?>px;
+			color: <?php echo $footerLinkColor; ?>;
+			text-transform: none;
+		}
+
+		@media only screen and (min-width:767px)  {
+
+			.main-navigation a {
+			font-family: <?php echo 	$menuFont; ?>;
+		}
+
+		.main-navigation a:hover {
+			background: <?php echo 	$navMenuHoverColor; ?>;
+		}
+
+		.main-navigation li a {
+			background-color: <?php echo $navigationMenuColor; ?>;
+			font-size: <?php echo $menuFontSize; ?>px;
+			font-weight: 100 !important;
+		}
+
+		.menu-menu-1-container {
+			height: 33px;
+			background: url(https://goldiracompaniescompared.com/wp-content/themes/CustomFlex/images/navfhleft.png) left top repeat;
+			background-color: <?php echo $navigationMenuBackgroundColor; ?>;
+		}
+
+		li.current-menu-item a {
+			background-color: <?php echo $navigationMenuActiveBackgroundColor; ?>;
+		}
+
+		.sub-menu {
+
+			width: <?php echo $menuSubWidth; ?>px !important;
+
+		}
+		/*subMenuBorderColor*/
+
+		.sub-menu a {
+			background: <?php echo $subMenu; ?> !important;
+			font-size: <?php echo $menuFontSize; ?>px !important;
+			font-weight: 900 !important;
+		}
+
+		.sub-menu a:hover {
+			background: <?php echo $subMenuHover; ?> !important;
+		}
+
+		.nav-menu li a {
+			color:  <?php echo $menuFontColor; ?>;
+		}
+
 		}
 	</style>
 </head>
@@ -128,6 +200,16 @@
 
 
 	</header><!-- #masthead -->
+
+	<?php
+
+	$ticker = get_field('ticker_to_show');
+
+	if ($ticker[0] == 'Yes') {
+
+		echo do_shortcode('[t4b-ticker id="1"]');
+	} ?>
+
 	<div id="page" class="hfeed site">
 
 

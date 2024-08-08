@@ -402,7 +402,85 @@ Template Name: Page with top image
       </div>
 
  
-      <div class="social-icons-follow">
+
+
+
+
+
+
+
+      <?php
+    ?>
+		
+    <div class="social-icons-follow bz mobile">
+		
+		<div class="follow" style="
+    position: relative;
+    top: 19px;
+">As seen on :</div>		
+  <div class="social-icons__icons">
+	  <?php
+	  if(is_page(16338) ){?>
+	  
+     
+  <a class="slink" href="https://markets.businessinsider.com/news/stocks/gold-ira-retirement-investing-2024-goldco-augusta-comparison-guide-launched-1033143000">
+	<img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/05/business-insider-logo.png" alt="augusta precious metals reviews">
+  </a>
+  <a class="slink" href="https://www.benzinga.com/pressreleases/24/03/37602969/gold-ira-retirement-investing-2024-goldco-augusta-comparison-guide-launched">
+  <img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/05/bz-logo-star-wars-day.gif" style="position: relative;top: -9px;"  alt="augusta precious metals reviews">
+  </a>
+ 
+ 
+  <a class="slink" href="https://www.theglobeandmail.com/investing/markets/markets-news/Plentisoft/25463710/2024-top-gold-ira-companies-for-first-time-investors-retirement-guide-launched/">
+   <img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/05/the-globe-and-mail-coupons-1.png" style="max-width: 180px;position: relative;top: -3px;"  alt="augusta precious metals reviews">
+  </a>
+ 
+  <a class="slink" href="https://www.barchart.com/story/news/25463707/2024-top-gold-ira-companies-for-first-time-investors-retirement-guide-launched">
+<img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/05/barchart-logo.png" style="position: relative;top: -3px;"  alt="augusta precious metals reviews">
+  </a>
+ 
+  <a class="slink" href="https://medium.com/@jim.garner78/why-you-need-precious-metals-as-part-of-a-diversified-investment-portfolio-902086c5a370">
+   <img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/05/medium-1.png" style="width: 125px;max-width: 125px;"  alt="augusta precious metals reviews"></a><a class="slink" href="https://apnews.com/press-release/marketersmedia/houston-augusta-c4d7184e991ac0779da2d31f0828e6f2">
+   <img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/05/aplogo.jpg"  alt="augusta precious metals reviews">
+  </a>
+ 
+	  
+	  
+	  
+   <?php } else{?>
+	  
+	  
+	  
+	    <a class="slink" href="https://markets.businessinsider.com/news/stocks/gold-ira-retirement-investing-2024-goldco-augusta-comparison-guide-launched-1033143000">
+	<img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/05/business-insider-logo.png">
+  </a>
+  <a class="slink" href="https://www.benzinga.com/pressreleases/24/03/37602969/gold-ira-retirement-investing-2024-goldco-augusta-comparison-guide-launched">
+  <img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/05/bz-logo-star-wars-day.gif" style="position: relative;top: -9px;">
+  </a>
+ 
+ 
+  <a class="slink" href="https://www.theglobeandmail.com/investing/markets/markets-news/Plentisoft/25463710/2024-top-gold-ira-companies-for-first-time-investors-retirement-guide-launched/">
+   <img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/05/the-globe-and-mail-coupons-1.png" style="max-width: 180px;position: relative;top: -3px;">
+  </a>
+ 
+  <a class="slink" href="https://www.barchart.com/story/news/25463707/2024-top-gold-ira-companies-for-first-time-investors-retirement-guide-launched">
+<img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/05/barchart-logo.png" style="position: relative;top: -3px;">
+  </a>
+ 
+  <a class="slink" href="https://medium.com/@jim.garner78/why-you-need-precious-metals-as-part-of-a-diversified-investment-portfolio-902086c5a370">
+   <img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/05/medium-1.png" style="width: 125px;max-width: 125px;"></a><a class="slink" href="https://apnews.com/press-release/marketersmedia/houston-augusta-c4d7184e991ac0779da2d31f0828e6f2">
+   <img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/05/aplogo.jpg">
+  </a>
+	  
+	  
+	 <?php }?> 
+
+ 
+ 
+</div>
+</div>
+
+      <div class="social-icons-follow  mobile">
 
         <div class="follow">Follow Us:</div>
         <div class="social-icons__icons">
@@ -442,6 +520,19 @@ Template Name: Page with top image
       </div>
 
  
+
+
+
+
+
+
+
+
+
+
+
+
+      
     </div>
     <?php if (get_option('flex_metadata_show') == "yes") { ?>
       <?php if (comments_open()) : ?>

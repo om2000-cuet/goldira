@@ -167,6 +167,11 @@ $fwcontentwidth = get_option('flex_blog_width') - 10;
     .postcontent {
       padding: 15px;
     }
+    .posthead h1 {
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+   
+}
   }
 </style>
 <div class="left">
@@ -194,7 +199,7 @@ $fwcontentwidth = get_option('flex_blog_width') - 10;
         endif; ?>
       </div>
 
-      <div class="social-icons-follow" style="margin-bottom: 43px;">
+      <div class="social-icons-follow bz mobile" style="margin-bottom: 43px;">
 
         <div class="follow" style="font-size:14px;">As seen on :</div>
         <div class="social-icons__icons">
@@ -227,7 +232,7 @@ $fwcontentwidth = get_option('flex_blog_width') - 10;
         </div>
       </div>
 
-      <div class="social-icons-follow">
+      <div class="social-icons-follow mobile">
 
         <div class="follow" style="font-size:14px;">Follow Us:</div>
         <div class="social-icons__icons">

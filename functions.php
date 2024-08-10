@@ -869,9 +869,81 @@ add_submenu_page(
 	'navigation-menu-settings', 
 	'goldira_navigation_menu_settings_page'
 );
-
+add_submenu_page(
+	'theme-options', // Parent menu slug
+	'Social Links', // Page title
+	'Social Links', // Menu title
+	'manage_options', // Capability
+	'goldira-social-links', // Menu slug
+	'goldira_social_links_page_callback' // Callback function
+);
 
 }
+// SOcial Links Settings 
+function goldira_social_links_page_callback() {
+    ?>
+    <div class="wrap">
+        <h1><?php _e('Social Links Settings', 'goldira'); ?></h1>
+        <form method="post" action="options.php">
+            <?php
+            settings_fields('goldira_social_links_group');
+            do_settings_sections('goldira-social-links');
+            submit_button();
+            ?>
+        </form>
+    </div>
+    <?php
+}
+function goldira_social_links_settings() {
+    register_setting('goldira_social_links_group', 'goldira_social_links');
+
+    add_settings_section(
+        'goldira_social_links_section',
+        __('Social Links', 'goldira'),
+        'goldira_social_links_section_cb',
+        'goldira-social-links'
+    );
+	add_settings_field(
+		'goldira_social_links_color',
+		__('Social Icons and Border Color', 'goldira'),
+		'goldira_social_links_color_cb',
+          'goldira-social-links',
+            'goldira_social_links_section'
+	);
+    $social_platforms = [
+        'twitter' => 'Twitter',
+        'facebook' => 'Facebook',
+        'instagram' => 'Instagram',
+        'pinterest' => 'Pinterest',
+        'youtube' => 'YouTube',
+        'linkedin' => 'LinkedIn',
+        'rss' => 'RSS'
+    ];
+
+    foreach ($social_platforms as $key => $platform) {
+        add_settings_field(
+            "goldira_{$key}_link",
+            __("$platform Link", 'goldira'),
+            function() use ($key) {
+                $options = get_option('goldira_social_links');
+                echo '<input type="text" name="goldira_social_links[goldira_' . $key . '_link]" value="' . esc_attr($options["goldira_{$key}_link"] ?? '') . '" class="regular-text" />';
+            },
+            'goldira-social-links',
+            'goldira_social_links_section'
+        );
+    }
+}
+
+add_action('admin_init', 'goldira_social_links_settings');
+function goldira_social_links_color_cb(){
+	$options = get_option('goldira_social_links');
+	echo '<input name="goldira_social_links[goldira_social_links_color]" id="flex_page_backgroundcolor" class="color-field" value="' . esc_attr($options['goldira_social_links_color'] ?? '') . '" style="width: 80px;" />';
+
+}
+function goldira_social_links_section_cb() {
+    echo '<p>' . __('Enter the URLs for your social media profiles:', 'goldira') . '</p>';
+}
+
 // Navigation Menu Settings page
 function goldira_navigation_menu_settings_page(){
 	?>
@@ -1674,3 +1746,35 @@ function enqueue_google_fonts_for_mobile() {
     }
 }
 add_action('wp_enqueue_scripts', 'enqueue_google_fonts_for_mobile');
+
+
+class Goldira_Submenu_Walker extends Walker_Nav_Menu {
+    function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0) {
+        $classes = empty($item->classes) ? array() : (array) $item->classes;
+        $class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item, $args));
+        $class_names = ' class="' . esc_attr($class_names) . '"';
+        
+        $output .= '<li' . $class_names .'>';
+
+        $attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
+        $attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
+        $attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
+        $attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
+
+        $item_output = $args->before;
+        $item_output .= '<a'. $attributes .'>';
+        $item_output .= $args->link_before . '<span>' . apply_filters('the_title', $item->title, $item->ID) . '</span>' . $args->link_after;
+        $item_output .= '</a>';
+        $item_output .= $args->after;
+
+        $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
+    }
+}
+
+function redirect_404_to_homepage() {
+    if (is_404()) {
+        wp_redirect(home_url('/'));
+        exit;
+    }
+}
+add_action('template_redirect', 'redirect_404_to_homepage');

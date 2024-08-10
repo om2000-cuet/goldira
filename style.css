@@ -1877,6 +1877,9 @@ footer#colophon.widgetarea div#footer-area {
 
     margin-left: 10%;
   }
+  blockquote.green {
+	background: #F4F5DF !important;
+}
 }
 
 @media only screen and (min-width: 320px) and (max-width: 760px) {
@@ -1999,7 +2002,57 @@ div#footer-menu li {
 		 
 		white-space: break-spaces;
 	}
-	
+	.page-template-default .postwrap {
+		width: 870px !important;
+	}
+	.page-template-default #sidebar, .page-template-default #sidebar #sidebar-right, .page-template-default #sidebar #sidebar-top {
+		width: 265px !important;
+	}
+	.page-template-default  #sidebar {
+		float: right;
+		/* width: 245px; */
+		margin-top: 0px;
+		position: relative;
+		padding-right: 0px;
+		margin-bottom: 15px;
+		margin-left: 5px;
+		margin-right: 5px;
+		margin-top: 40px;
+	}
+	.FixedWidget__fixed_widget__pinned {
+		margin-top: 10px !important;
+	}
+	.page-template-default  .social-icons__icons img {
+		max-width: 90px;
+		max-height: 50px;
+	}
+	.page-template-default .social-icons-follow {
+		display: flex;
+		justify-content: center;
+	}
+    .page-template-default .follow {
+        position: relative;
+        top: 16px;
+        left: -8px;
+        font-weight: bold;
+        font-size: 17px;
+    }
+	.page-template-default article {
+		margin-bottom: 0px;
+		border:none;
+	}
+	.page-template-default  .social-icons__icons a {
+		text-decoration: none !important;
+	}
+	.page-template-default  .social-icons__icons a {
+		margin-right: 12px;
+	}
+	.page-template-default .social-icons__icons span {
+		color: black !important;
+		font-size: 18px;
+		position: relative;
+		top: -1px;
+	}
 }
 
 @media only screen and (min-width: 320px) and (max-width: 760px) {
@@ -2102,7 +2155,7 @@ blockquote.rounded.reduceleftmargin.removeblockquotemobile {
 	padding-bottom: 0 !important;
 	margin-bottom: 0;
 }
-ul.star, ol.star ,ul.arrow,ul.check{
+ul.star, ol.star ,ul.arrow,ul.check,ul.diamond{
      padding-left: 14px ! IMPORTANT;
 }
 table#rating-comparison-1 tr td:last-child {
@@ -2176,4 +2229,67 @@ blockquote {
     font-family: 'Roboto', sans-serif;
     font-weight: normal;
 }
+.page-template-default div#primary, .page-template-default div#page {
+	margin-top: 0px;
+	padding-top: 0px;
+}
+#footer-mobile-social i,#footer-mobile-social svg {
+     
+    font-family: 'Font Awesome 5 Brands';
+    font-style: normal;
+    border: 2px solid black;
+    border-radius: 50%;
+    padding: 5px;
+    height: 16px ! IMPORTANT;
+    width: 16px ! IMPORTANT;
+    display: block;
+}
+div#footer-mobile-social li {
+    list-style: none;
+    float: left;
+    margin-right: 12px;
+}
+ul#menu-footer-menu {
+    overflow: hidden;
+    display: block;
+    text-align: center;
+    padding: 0px;
+    line-height: 27px;
+}
+div#footer-menu li {
+    float: inline-end;
+   
+}
+div#footer-mobile-social {
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+.page-id-16338 blockquote.darker.fit p {
+    /* display: inline; */
+    overflow: visible !important;
+}
+.page-template-default  .posthead h1 {
+    font-size: 32px;
+	text-align: center;
+	padding-right: 15px;
+    }
+	.page-template-default .social-icons__icons a {
+		text-decoration: none;
+	}
+	.page-template-default article {
+		margin-bottom: 0px;
+		border:none;
+	}
+	.page-template-default div#page {
+		padding-right: 0px;
+		padding-left: 0px;
+	}
+	footer.entry-meta {
+		display: none;
+	}
+
+	blockquote {
+		word-break: auto-phrase;
+	}
+
 }

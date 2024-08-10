@@ -74,8 +74,15 @@
 	$menuFontColor = esc_attr($options['goldira_navigation_menu_font_color']);
 	$subMenuBorderColor = esc_attr($options['goldira_navigation_menu_submenu_border_color']);
 
+	/** Social Link Color */
+	$options = get_option('goldira_social_links');
+	$socialLinkColor = esc_attr($options['goldira_social_links_color']);
 	?>
 	<style>
+		ul.social-links-wrap * {
+    border-color: <?php echo $socialLinkColor; ?>  ! IMPORTANT;
+    fill: <?php echo $socialLinkColor; ?>  ! IMPORTANT;
+}
 		.postcontent {
 			font-family: <?php echo $blogFont; ?>;
 			font-size: <?php echo $blogFontSize; ?>px;
@@ -181,6 +188,7 @@
 				array(
 					'theme_location' => 'primary',
 					'menu_class'     => 'nav-menu',
+					'walker'         => new Goldira_Submenu_Walker(),
 				)
 			);
 			?>

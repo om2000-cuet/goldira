@@ -80,9 +80,10 @@
 	?>
 	<style>
 		ul.social-links-wrap * {
-    border-color: <?php echo $socialLinkColor; ?>  ! IMPORTANT;
-    fill: <?php echo $socialLinkColor; ?>  ! IMPORTANT;
-}
+			border-color: <?php echo $socialLinkColor; ?> ! IMPORTANT;
+			fill: <?php echo $socialLinkColor; ?> ! IMPORTANT;
+		}
+
 		.postcontent {
 			font-family: <?php echo $blogFont; ?>;
 			font-size: <?php echo $blogFontSize; ?>px;
@@ -106,7 +107,7 @@
 		}
 
 		footer#colophon.widgetarea {
-			background-color: <?php echo $footerBackground; ?>;
+			background-color: <?php echo $footerBackground; ?> !important;
 			padding-top: 33px;
 			padding-bottom: 33px;
 		}
@@ -123,52 +124,61 @@
 			text-transform: none;
 		}
 
-		@media only screen and (min-width:767px)  {
+		@media only screen and (min-width:767px) {
 
 			.main-navigation a {
-			font-family: <?php echo 	$menuFont; ?>;
-		}
+				font-family: <?php echo 	$menuFont; ?>;
+			}
 
-		.main-navigation a:hover {
-			background: <?php echo 	$navMenuHoverColor; ?>;
-		}
+			.main-navigation a:hover {
+				background: <?php echo 	$navMenuHoverColor; ?>;
+			}
 
-		.main-navigation li a {
-			background-color: <?php echo $navigationMenuColor; ?>;
-			font-size: <?php echo $menuFontSize; ?>px;
-			font-weight: 100 !important;
-		}
+			.main-navigation li a {
+				background-color: <?php echo $navigationMenuColor; ?>;
+				font-size: <?php echo $menuFontSize; ?>px;
+				font-weight: 100 !important;
+			}
 
-		.menu-menu-1-container {
-			height: 33px;
-			background: url(https://goldiracompaniescompared.com/wp-content/themes/CustomFlex/images/navfhleft.png) left top repeat;
-			background-color: <?php echo $navigationMenuBackgroundColor; ?>;
-		}
+			.menu-menu-1-container {
+				height: 33px;
+				background: url(https://goldiracompaniescompared.com/wp-content/themes/CustomFlex/images/navfhleft.png) left top repeat;
+				background-color: <?php echo $navigationMenuBackgroundColor; ?>;
+			}
 
-		li.current-menu-item a {
-			background-color: <?php echo $navigationMenuActiveBackgroundColor; ?>;
-		}
+			li.current-menu-item a {
+				background-color: <?php echo $navigationMenuActiveBackgroundColor; ?>;
+			}
 
-		.sub-menu {
+			.sub-menu {
 
-			width: <?php echo $menuSubWidth; ?>px !important;
+				width: <?php echo $menuSubWidth; ?>px !important;
 
-		}
-		/*subMenuBorderColor*/
+			}
 
-		.sub-menu a {
-			background: <?php echo $subMenu; ?> !important;
-			font-size: <?php echo $menuFontSize; ?>px !important;
-			font-weight: 900 !important;
-		}
+			/*subMenuBorderColor*/
 
-		.sub-menu a:hover {
-			background: <?php echo $subMenuHover; ?> !important;
-		}
+			.sub-menu a {
+				background: <?php echo $subMenu; ?> !important;
+				font-size: <?php echo $menuFontSize; ?>px !important;
+				font-weight: 900 !important;
+			}
 
-		.nav-menu li a {
-			color:  <?php echo $menuFontColor; ?>;
-		}
+			.sub-menu a:hover {
+				background: <?php echo $subMenuHover; ?> !important;
+			}
+
+			.sub-menu {
+				background-color: <?php echo $subMenuBorderColor; ?>;
+			}
+
+			.nav-menu li a {
+				color: <?php echo $menuFontColor; ?>;
+			}
+
+			ul.sub-menu li {
+				border-bottom: 2px solid <?php echo $subMenuBorderColor; ?>;
+			}
 
 		}
 	</style>

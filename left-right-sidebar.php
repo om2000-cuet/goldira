@@ -136,6 +136,11 @@ $fwcontentwidth = get_option('flex_blog_width') - 10;
     position: relative;
   }
 
+  @media only screen and (min-width:767px)  {
+  .page-template-left-right-sidebar .bz {
+    display: flex !important;
+}
+  }
   @media only screen and (min-width: 320px) and (max-width: 760px) {
     header#masthead {
       margin-bottom: 0px !important;

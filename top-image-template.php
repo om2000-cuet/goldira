@@ -43,6 +43,12 @@ Template Name: Page with top image
 
   div#myttl h1 {
     background: transparent !important;
+    color: white !IMPORTANT;
+    text-align: center;
+
+    color: white !IMPORTANT;
+    text-align: center;
+    font-size: 34px;
   }
 
   div#myimg img {
@@ -55,17 +61,7 @@ Template Name: Page with top image
     width: 67px;
   }
 
-  div#myttl h1 {
-    color: white !IMPORTANT;
-    text-align: center;
-  }
 
-  div#myttl h1 {
-    color: white !IMPORTANT;
-    text-align: center;
-    font-size: 34px;
-
-  }
 
   div#mycon {
     overflow: hidden;
@@ -80,23 +76,23 @@ Template Name: Page with top image
 
   img#globe {
     width: 100%;
-  }
-
-  img#globe {
     display: block;
     text-align: center;
     margin: auto;
     padding-top: 20px;
     padding-bottom: 20px;
   }
-  .posthead h1, .posthead h2 {
-     
+
+  .posthead h1,
+  .posthead h2 {
+
     padding: 15px 8px 15px 15px;
-    
-}
+
+  }
+
   .posthead {
     margin-top: 24px;
-    
+
   }
 
   #sidebar {
@@ -136,76 +132,82 @@ Template Name: Page with top image
     border-collapse: collapse;
     padding: 2px;
   }
+
+  @media only screen and (min-width: 767px) {
+    div#myttl h1 {
+      margin-bottom: 0px;
+      line-height: 53px;
+    }
+  }
+
+  .social-icons a {
+    text-decoration: none;
+    color: orange;
+    margin-right: 12px;
+    padding: 0px;
+    font-size: 27px;
+  }
+
+  .social-icons-follow {
+    display: flex;
+    justify-content: center;
+  }
+
+  .follow {
+    position: relative;
+    top: 10px;
+    left: -8px;
+    font-weight: bold;
+    font-size: 17px;
+  }
+
+  i.fab.fa-facebook {
+    color: #1877f2 !important;
+  }
+
+  i.fa-brands.fa-x-twitter {
+    color: black;
+  }
+
+  i.fab.fa-linkedin-in {
+    color: #0a66c2;
+  }
+
+  i.fab.fa-pinterest {
+    color: #e60023;
+  }
+
+  .social-icons__icons i {
+    font-size: 33px;
+    margin-right: 4px;
+    position: relative;
+    top: 3px;
+  }
+
+  .social-icons__icons a {
+    margin-right: 12px;
+  }
+
+  .social-icons__icons span {
+    color: black !important;
+    font-size: 18px;
+    position: relative;
+    top: -1px
+  }
+
+  .social-icons__icons a {
+    text-decoration: none !important;
+  }
+
+  i.fab.fa-instagram {
+    color: #c38615 !IMPORTANT;
+  }
+
+  .social-icons__icons img {
+    max-width: 90px;
+    max-height: 50px;
+  }
 </style>
-<style>
-        .social-icons a {
-          text-decoration: none;
-          color: orange;
-          margin-right: 12px;
-          padding: 0px;
-          font-size: 27px;
-        }
-
-        .social-icons-follow {
-          display: flex;
-          justify-content: center;
-        }
-
-        .follow {
-          position: relative;
-          top: 10px;
-          left: -8px;
-          font-weight: bold;
-          font-size: 17px;
-        }
-
-        i.fab.fa-facebook {
-          color: #1877f2 !important;
-        }
-
-        i.fa-brands.fa-x-twitter {
-          color: black;
-        }
-
-        i.fab.fa-linkedin-in {
-          color: #0a66c2;
-        }
-
-        i.fab.fa-pinterest {
-          color: #e60023;
-        }
-
-        .social-icons__icons i {
-          font-size: 33px;
-          margin-right: 4px;
-          position: relative;
-          top: 3px;
-        }
-
-        .social-icons__icons a {
-          margin-right: 12px;
-        }
-
-        .social-icons__icons span {
-          color: black !important;
-          font-size: 18px;
-          position: relative;
-          top: -1px
-        }
-
-        .social-icons__icons a {
-          text-decoration: none !important;
-        }
-
-        i.fab.fa-instagram {
-          color: #c38615 !IMPORTANT;
-        }
-
-        .social-icons__icons img {
-          max-width: 90px;
-          max-height: 50px;
-        }
-      </style>
 
 <div id="content">
 
@@ -278,10 +280,6 @@ Template Name: Page with top image
       </div>
     </div>
     <div class="post">
-
-
-
-
       <div class="posthead">
 
 
@@ -297,10 +295,6 @@ Template Name: Page with top image
 
         <div id="mycon" <?php echo $constyle; ?>>
           <div id="mytitleandimg">
-
-
-
-
 
 
             <div id="right">
@@ -319,9 +313,6 @@ Template Name: Page with top image
               <div id="myttl">
                 <h1 <?php echo $style; ?>> <?php the_title(); ?></h1>
               </div>
-
-
-
 
 
 
@@ -352,13 +343,13 @@ Template Name: Page with top image
               </a>
 
             <?php } else { ?>
- 
+
               <img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/02/Gold_ira_companies_bulletin_logo.png" <?php echo $bstyle; ?> />
 
- 
+
             <?php } ?>
 
- 
+
           </div>
 
 
@@ -384,7 +375,7 @@ Template Name: Page with top image
           ?>
           <img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/06/dougHD-webP.webp" id="doug" /> <img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/06/new-globe-webP.webp" id="globe" <?php echo $istyle; ?> />
 
- 
+
         </div>
 
       </div>
@@ -401,84 +392,70 @@ Template Name: Page with top image
         endif; ?>
       </div>
 
- 
+      <div class="social-icons-follow bz mobile">
+
+        <div class="follow" style="position: relative; top: 19px;">As seen on :</div>
+        <div class="social-icons__icons">
+          <?php
+          if (is_page(16338)) { ?>
+
+
+            <a class="slink" href="https://markets.businessinsider.com/news/stocks/gold-ira-retirement-investing-2024-goldco-augusta-comparison-guide-launched-1033143000">
+              <img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/05/business-insider-logo.png" alt="augusta precious metals reviews">
+            </a>
+            <a class="slink" href="https://www.benzinga.com/pressreleases/24/03/37602969/gold-ira-retirement-investing-2024-goldco-augusta-comparison-guide-launched">
+              <img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/05/bz-logo-star-wars-day.gif" style="position: relative;top: -9px;" alt="augusta precious metals reviews">
+            </a>
+
+
+            <a class="slink" href="https://www.theglobeandmail.com/investing/markets/markets-news/Plentisoft/25463710/2024-top-gold-ira-companies-for-first-time-investors-retirement-guide-launched/">
+              <img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/05/the-globe-and-mail-coupons-1.png" style="max-width: 180px;position: relative;top: -3px;" alt="augusta precious metals reviews">
+            </a>
+
+            <a class="slink" href="https://www.barchart.com/story/news/25463707/2024-top-gold-ira-companies-for-first-time-investors-retirement-guide-launched">
+              <img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/05/barchart-logo.png" style="position: relative;top: -3px;" alt="augusta precious metals reviews">
+            </a>
+
+            <a class="slink" href="https://medium.com/@jim.garner78/why-you-need-precious-metals-as-part-of-a-diversified-investment-portfolio-902086c5a370">
+              <img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/05/medium-1.png" style="width: 125px;max-width: 125px;" alt="augusta precious metals reviews"></a><a class="slink" href="https://apnews.com/press-release/marketersmedia/houston-augusta-c4d7184e991ac0779da2d31f0828e6f2">
+              <img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/05/aplogo.jpg" alt="augusta precious metals reviews">
+            </a>
 
 
 
 
+          <?php } else { ?>
 
 
 
-      <?php
-    ?>
-		
-    <div class="social-icons-follow bz mobile">
-		
-		<div class="follow" style="
-    position: relative;
-    top: 19px;
-">As seen on :</div>		
-  <div class="social-icons__icons">
-	  <?php
-	  if(is_page(16338) ){?>
-	  
-     
-  <a class="slink" href="https://markets.businessinsider.com/news/stocks/gold-ira-retirement-investing-2024-goldco-augusta-comparison-guide-launched-1033143000">
-	<img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/05/business-insider-logo.png" alt="augusta precious metals reviews">
-  </a>
-  <a class="slink" href="https://www.benzinga.com/pressreleases/24/03/37602969/gold-ira-retirement-investing-2024-goldco-augusta-comparison-guide-launched">
-  <img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/05/bz-logo-star-wars-day.gif" style="position: relative;top: -9px;"  alt="augusta precious metals reviews">
-  </a>
- 
- 
-  <a class="slink" href="https://www.theglobeandmail.com/investing/markets/markets-news/Plentisoft/25463710/2024-top-gold-ira-companies-for-first-time-investors-retirement-guide-launched/">
-   <img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/05/the-globe-and-mail-coupons-1.png" style="max-width: 180px;position: relative;top: -3px;"  alt="augusta precious metals reviews">
-  </a>
- 
-  <a class="slink" href="https://www.barchart.com/story/news/25463707/2024-top-gold-ira-companies-for-first-time-investors-retirement-guide-launched">
-<img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/05/barchart-logo.png" style="position: relative;top: -3px;"  alt="augusta precious metals reviews">
-  </a>
- 
-  <a class="slink" href="https://medium.com/@jim.garner78/why-you-need-precious-metals-as-part-of-a-diversified-investment-portfolio-902086c5a370">
-   <img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/05/medium-1.png" style="width: 125px;max-width: 125px;"  alt="augusta precious metals reviews"></a><a class="slink" href="https://apnews.com/press-release/marketersmedia/houston-augusta-c4d7184e991ac0779da2d31f0828e6f2">
-   <img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/05/aplogo.jpg"  alt="augusta precious metals reviews">
-  </a>
- 
-	  
-	  
-	  
-   <?php } else{?>
-	  
-	  
-	  
-	    <a class="slink" href="https://markets.businessinsider.com/news/stocks/gold-ira-retirement-investing-2024-goldco-augusta-comparison-guide-launched-1033143000">
-	<img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/05/business-insider-logo.png">
-  </a>
-  <a class="slink" href="https://www.benzinga.com/pressreleases/24/03/37602969/gold-ira-retirement-investing-2024-goldco-augusta-comparison-guide-launched">
-  <img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/05/bz-logo-star-wars-day.gif" style="position: relative;top: -9px;">
-  </a>
- 
- 
-  <a class="slink" href="https://www.theglobeandmail.com/investing/markets/markets-news/Plentisoft/25463710/2024-top-gold-ira-companies-for-first-time-investors-retirement-guide-launched/">
-   <img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/05/the-globe-and-mail-coupons-1.png" style="max-width: 180px;position: relative;top: -3px;">
-  </a>
- 
-  <a class="slink" href="https://www.barchart.com/story/news/25463707/2024-top-gold-ira-companies-for-first-time-investors-retirement-guide-launched">
-<img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/05/barchart-logo.png" style="position: relative;top: -3px;">
-  </a>
- 
-  <a class="slink" href="https://medium.com/@jim.garner78/why-you-need-precious-metals-as-part-of-a-diversified-investment-portfolio-902086c5a370">
-   <img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/05/medium-1.png" style="width: 125px;max-width: 125px;"></a><a class="slink" href="https://apnews.com/press-release/marketersmedia/houston-augusta-c4d7184e991ac0779da2d31f0828e6f2">
-   <img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/05/aplogo.jpg">
-  </a>
-	  
-	  
-	 <?php }?> 
+            <a class="slink" href="https://markets.businessinsider.com/news/stocks/gold-ira-retirement-investing-2024-goldco-augusta-comparison-guide-launched-1033143000">
+              <img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/05/business-insider-logo.png">
+            </a>
+            <a class="slink" href="https://www.benzinga.com/pressreleases/24/03/37602969/gold-ira-retirement-investing-2024-goldco-augusta-comparison-guide-launched">
+              <img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/05/bz-logo-star-wars-day.gif" style="position: relative;top: -9px;">
+            </a>
 
- 
- 
-</div>
-</div>
+
+            <a class="slink" href="https://www.theglobeandmail.com/investing/markets/markets-news/Plentisoft/25463710/2024-top-gold-ira-companies-for-first-time-investors-retirement-guide-launched/">
+              <img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/05/the-globe-and-mail-coupons-1.png" style="max-width: 180px;position: relative;top: -3px;">
+            </a>
+
+            <a class="slink" href="https://www.barchart.com/story/news/25463707/2024-top-gold-ira-companies-for-first-time-investors-retirement-guide-launched">
+              <img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/05/barchart-logo.png" style="position: relative;top: -3px;">
+            </a>
+
+            <a class="slink" href="https://medium.com/@jim.garner78/why-you-need-precious-metals-as-part-of-a-diversified-investment-portfolio-902086c5a370">
+              <img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/05/medium-1.png" style="width: 125px;max-width: 125px;"></a><a class="slink" href="https://apnews.com/press-release/marketersmedia/houston-augusta-c4d7184e991ac0779da2d31f0828e6f2">
+              <img src="https://goldiracompaniescompared.com/wp-content/uploads/2024/05/aplogo.jpg">
+            </a>
+
+
+          <?php } ?>
+
+
+
+        </div>
+      </div>
 
       <div class="social-icons-follow  mobile">
 
@@ -515,24 +492,11 @@ Template Name: Page with top image
             </svg><span>Pinterest</span>
           </a>
 
- 
+
         </div>
       </div>
 
  
-
-
-
-
-
-
-
-
-
-
-
-
-      
     </div>
     <?php if (get_option('flex_metadata_show') == "yes") { ?>
       <?php if (comments_open()) : ?>

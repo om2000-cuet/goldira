@@ -1583,8 +1583,13 @@ if (wp_is_mobile()) {
 
 
 	<?php
-	$fwpagewidth = get_option('flex_blog_width') - 5;
-	$fwcontentwidth = get_option('flex_blog_width') - 10;
+	$options = get_option('goldira_settings_page_settings');
+    $blogWidth = $options['goldira_blog_width'] ?? '16';
+
+
+	$fwpagewidth = $blogWidth  - 5;
+	$fwcontentwidth = $blogWidth  - 10;
+ 
 	?>
 
 
@@ -1764,6 +1769,7 @@ if (wp_is_mobile()) {
 		.social-icons-follow {
 			display: flex;
 			justify-content: center;
+			margin-bottom: 15px;
 		}
 
 		.follow {

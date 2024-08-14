@@ -357,6 +357,63 @@ add_filter('wp_page_menu_args', 'twentytwelve_page_menu_args');
  */
 function twentytwelve_widgets_init()
 {
+
+	if ( function_exists('register_sidebar') )
+	register_sidebar(array(
+		'name' => 'Sidebar_top',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
+	));
+	/*
+if ( function_exists('register_sidebar') )
+	register_sidebar(array(
+		'name' => 'Sidebar_left',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
+	));
+
+if ( function_exists('register_sidebar') )
+	register_sidebar(array(
+		'name' => 'Sidebar_right',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
+	));
+	*/
+if ( function_exists('register_sidebar') )
+	register_sidebar(array(
+		'name' => 'Feature_top',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
+	));
+	
+ 
+
+/*
+if ( function_exists('register_sidebar') )
+	register_sidebar(array(
+		'name' => 'Left End Sidebar',
+		'before_widget' => '<div class="widget">',
+		'after_widget' => '</div>', 
+		'before_title' => '<div class="toptitle"><h5>',
+		'after_title' => '</h5></div>',
+	));	
+	if ( function_exists('register_sidebar') )
+	register_sidebar(array(
+		'name' => 'Right End Sidebar',
+		'before_widget' => '<div class="widget">',
+		'after_widget' => '</div>', 
+		'before_title' => '<div class="toptitle"><h5>',
+		'after_title' => '</h5></div>',
+	));
+	*/
 	register_sidebar(
 		array(
 			'name'          => __('Main Sidebar', 'twentytwelve'),
@@ -399,29 +456,9 @@ function twentytwelve_widgets_init()
 			'after_title'   => '</h3>',
 	));
 
-	register_sidebar(
-		array(
-			'name'          => __('First Front Page Widget Area', 'twentytwelve'),
-			'id'            => 'sidebar-2',
-			'description'   => __('Appears when using the optional Front Page template with a page set as Static Front Page', 'twentytwelve'),
-			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</aside>',
-			'before_title'  => '<h3 class="widget-title">',
-			'after_title'   => '</h3>',
-		)
-	);
+ 
 
-	register_sidebar(
-		array(
-			'name'          => __('Second Front Page Widget Area', 'twentytwelve'),
-			'id'            => 'sidebar-3',
-			'description'   => __('Appears when using the optional Front Page template with a page set as Static Front Page', 'twentytwelve'),
-			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</aside>',
-			'before_title'  => '<h3 class="widget-title">',
-			'after_title'   => '</h3>',
-		)
-	);
+ 
 }
 add_action('widgets_init', 'twentytwelve_widgets_init');
 
@@ -879,6 +916,64 @@ add_submenu_page(
 );
 
 }
+//Main Settings Page 
+function goldira_theme_options_page() {
+    ?>
+    <div class="wrap">
+        <h1><?php _e('Gold Ira Settings', 'goldira'); ?></h1>
+        <form method="post" action="options.php">
+            <?php
+            settings_fields('goldira_settings_page_group');
+            do_settings_sections('goldira-settings-page');
+            submit_button();
+            ?>
+        </form>
+    </div>
+    <?php
+}
+
+add_action('admin_init', 'goldira_settings_page_opc');
+
+function goldira_settings_page_opc()
+{
+	register_setting('goldira_settings_page_group', 'goldira_settings_page_settings');
+
+	add_settings_section(
+		'goldira_settings_page_section',
+		__('Gold Ira Site Settings', 'goldira'),
+		'goldira_settings_page_section_cb',
+		'goldira-settings-page',
+	);
+	add_settings_field(
+		'goldira_blog_width',
+		__('Site Width', 'goldira'),
+		'goldira_site_width_cb',
+		'goldira-settings-page', 
+		'goldira_settings_page_section'
+	);
+}
+function goldira_settings_page_section_cb() {
+    echo '<p>' . __('Enter the Width of Your blog:', 'goldira') . '</p>';
+}
+
+function goldira_site_width_cb() {
+    $options = get_option('goldira_settings_page_settings');
+    $blogWidth = $options['goldira_blog_width'] ?? '16';
+
+    echo '<input name="goldira_settings_page_settings[goldira_blog_width]" id="flex_sidebar_tfontsize" type="text" value="' . esc_attr($blogWidth) . '" style="width: 80px;" />';
+    echo '<p class="description">' . __('Select the size (in pixels) of the title font in your top sidebar boxes', 'goldira') . '</p>';
+}
+
+
+
+
+
+
+
+
+
+
+
 // SOcial Links Settings 
 function goldira_social_links_page_callback() {
     ?>
@@ -1778,3 +1873,120 @@ function redirect_404_to_homepage() {
     }
 }
 add_action('template_redirect', 'redirect_404_to_homepage');
+
+
+
+	
+	// Add a menu item in the admin panel
+	function custom_theme_menu() {
+		add_menu_page(
+			'Homepage Titles', // Page title
+			'Homepage Titles', // Menu title
+			'manage_options', // Capability required to access
+			'homepage_titles', // Menu slug
+			'homepage_titles_page', // Function to output the content
+			'dashicons-admin-generic', // Icon (optional)
+			30 // Position in the menu
+		);
+	}
+	add_action('admin_menu', 'custom_theme_menu');
+	
+	// Function to output the content of the options page
+	function homepage_titles_page() {
+		?>
+		<div class="wrap">
+			<h1>Homepage Titles</h1>
+			<form method="post" action="options.php">
+				<?php
+				settings_fields('homepage_titles_section');
+				do_settings_sections('homepage_titles');
+				submit_button();
+				?>
+			</form>
+		</div>
+		<?php
+	}
+	
+	// Function to register and display settings
+	function register_homepage_titles_settings() {
+		for ($i = 1; $i <= 14; $i++) {
+			add_settings_section(
+				"homepage_titles_section_$i", // Section ID
+				"Section $i", // Section title
+				'homepage_titles_section_callback', // Callback function to output description (optional)
+				'homepage_titles' // Page slug
+			);
+	
+			add_settings_field(
+				"homepage_title_$i", // Field ID
+				"Title for Section $i", // Field label
+				"homepage_titles_field_callback", // Callback function to output the input field
+				'homepage_titles', // Page slug
+				"homepage_titles_section_$i", // Section ID
+				array('label_for' => "homepage_title_$i") // Additional arguments (optional)
+			);
+	
+			add_settings_field(
+				"homepage_order_$i", // Field ID for the order input
+				"Order for Section $i", // Field label for the order input
+				"homepage_order_field_callback", // Callback function to output the order input field
+				'homepage_titles', // Page slug
+				"homepage_titles_section_$i", // Section ID
+				array('label_for' => "homepage_order_$i") // Additional arguments (optional)
+			);
+	
+			add_settings_field(
+				"homepage_link_$i", // Field ID for the link input
+				"Open link for Section $i", // Field label for the link input
+				"homepage_link_field_callback", // Callback function to output the link input field
+				'homepage_titles', // Page slug
+				"homepage_titles_section_$i", // Section ID
+				array('label_for' => "homepage_link_$i") // Additional arguments (optional)
+			);
+	
+			register_setting('homepage_titles_section', "homepage_title_$i");
+			register_setting('homepage_titles_section', "homepage_order_$i");
+			register_setting('homepage_titles_section', "homepage_link_$i");
+		}
+	}
+	add_action('admin_init', 'register_homepage_titles_settings');
+	
+	// Callback function to output the input field
+	function homepage_titles_field_callback($args) {
+		$option_name = esc_attr($args['label_for']);
+		$option_value = get_option($option_name);
+		echo '<input type="text" id="' . $args['label_for'] . '" name="' . $option_name . '" value="' . $option_value . '" />';
+	}
+	
+	// Callback function to output the order input field
+	function homepage_order_field_callback($args) {
+		$option_name = esc_attr($args['label_for']);
+		$option_value = get_option($option_name);
+		echo '<input type="number" id="' . $args['label_for'] . '" name="' . $option_name . '" value="' . $option_value . '" min="1" />';
+	}
+	
+	// Callback function to output the link dropdown field
+	function homepage_link_field_callback($args) {
+		$option_name = esc_attr($args['label_for']);
+		$option_value = get_option($option_name);
+		$dropdown_options = array('Same', 'New');
+		echo '<select id="' . $args['label_for'] . '" name="' . $option_name . '">';
+		foreach ($dropdown_options as $option) {
+			$selected = ($option === $option_value) ? 'selected="selected"' : '';
+			echo '<option value="' . $option . '" ' . $selected . '>' . $option . '</option>';
+		}
+		echo '</select>';
+	}
+	
+	// Callback function to output the section description (optional)
+	function homepage_titles_section_callback($args) {
+		echo '<p>Enter title for Section ' . str_replace('homepage_titles_section_', '', $args['id']) . '</p>';
+	}
+	
+		
+		
+		function scanwp_font_size( $initArray ){
+		$initArray['fontsize_formats'] = "8px 10px 12px 14px 16px 20px 24px 26px 28px 32px 36px 48px 60px 72px 96px";
+		return $initArray;
+	  }
+	add_filter( 'tiny_mce_before_init', 'scanwp_font_size' );
